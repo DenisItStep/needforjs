@@ -18,7 +18,7 @@ const keys = {
 const setting = {
     start: false,
     score: 0,
-    speed: 0,
+    speed: 3,
     traffic: 3
 };
 
@@ -28,7 +28,6 @@ function getQuantityElements(heightElement) {
 
 function startGame() {
     start.classList.add('hide');
-    
     for (let i = 0; i < getQuantityElements(100); i++) {
         const line = document.createElement('div');
         line.classList.add('line');
@@ -50,6 +49,8 @@ function startGame() {
 
     setting.start = true;
     gameArea.appendChild(car);
+    setting.x = car.offsetLeft;
+    setting.y = car.offsetTop;
     requestAnimationFrame(playGame);
 }
 
@@ -88,7 +89,6 @@ function stopRun(event) {
     event.preventDefault();
     keys[event.key] = false;
 }
-
 
 function moveRoad() {
     let lines = document.querySelectorAll('.line');
